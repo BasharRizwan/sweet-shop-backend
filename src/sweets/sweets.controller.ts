@@ -22,7 +22,7 @@ export class SweetsController {
     @Param('id') id: string,
     @Body() body: { quantity: number },
   ) {
-    return this.sweetsService.purchase(Number(id), body.quantity);
+    return this.sweetsService.purchase(+id, body.quantity);
   }
 
   @Post(':id/restock')
@@ -30,6 +30,6 @@ export class SweetsController {
     @Param('id') id: string,
     @Body() body: { quantity: number },
   ) {
-    return this.sweetsService.restock(Number(id), body.quantity);
+    return this.sweetsService.restock(+id, body.quantity);
   }
 }

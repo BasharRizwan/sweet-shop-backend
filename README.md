@@ -111,3 +111,20 @@ AI tools were used responsibly as development assistants during this project.
 
 ### Reflection
 AI helped speed up learning and debugging, but all core logic and decisions were implemented and understood by me. The project reflects my own understanding of backend development concepts, enhanced by modern AI tooling.
+
+## 📸 Screenshots
+
+### Backend Running
+![Backend Running](screenshots/backend-running.png)
+
+### User Registration
+![Register API](screenshots/register-api.png)
+
+### Login & JWT Token
+![Login API](screenshots/login-api-token.png)
+
+### Create Sweet (Authorized)
+![Create Sweet](screenshots/create-sweet.png)
+
+### Purchase Sweet
+![Purchase Sweet](screenshots/purchase-sweet.png)

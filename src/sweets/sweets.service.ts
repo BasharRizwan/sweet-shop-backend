@@ -1,4 +1,4 @@
-import { Injectable, BadRequestException } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Sweet } from './sweet.entity';
@@ -10,11 +10,11 @@ export class SweetsService {
     private sweetRepository: Repository<Sweet>,
   ) {}
 
-  create(sweet: Partial<Sweet>) {
+  async create(sweet: Partial<Sweet>) {
     return this.sweetRepository.save(sweet);
   }
 
-  findAll() {
+  async findAll() {
     return this.sweetRepository.find();
   }
 
@@ -22,11 +22,11 @@ export class SweetsService {
     const sweet = await this.sweetRepository.findOne({ where: { id } });
 
     if (!sweet) {
-      throw new BadRequestException('Sweet not found');
+      throw new NotFoundException('Sweet not found');
     }
 
     if (sweet.quantity < quantity) {
-      throw new BadRequestException('Not enough stock');
+      throw new NotFoundException('Not enough stock');
     }
 
     sweet.quantity -= quantity;
@@ -37,7 +37,7 @@ export class SweetsService {
     const sweet = await this.sweetRepository.findOne({ where: { id } });
 
     if (!sweet) {
-      throw new BadRequestException('Sweet not found');
+      throw new NotFoundException('Sweet not found');
     }
 
     sweet.quantity += quantity;
